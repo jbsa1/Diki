@@ -81,7 +81,7 @@ if (!mysqli_query($koneksi,$sql)) {
                     <div id="sidebar-menu">
                         <!-- Left Menu Start -->
                         <ul class="metismenu" id="side-menu">
-                            <li><a href="index.html"><i class="fi-clock"></i> <span>Home</span> </a></li>
+ 
 							<li class="menu-title">Form</li>
                             <li><a href="formInputCon.php"><i class="fi-clock"></i> <span>Input Container</span> </a></li>
                             <li><a href="formPlugging.php"><i class="fi-clock"></i> <span>Plugging</span> </a></li>
