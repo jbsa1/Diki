@@ -1,3 +1,15 @@
+<?php
+
+include 'koneksi.php';
+
+$sql = mysqli_query($koneksi,"SELECT idcontainer FROM inputcont");
+
+while ($row = $sql->fetch_assoc()) {
+    $idCont[] = $row['idcontainer'];
+}
+$counter = mysqli_num_rows($sql);
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -112,13 +124,27 @@
                                         <div class="form-group row">
                                             <label for="type" class="col-4 col-form-label">Container Asal</label>
                                             <div class="col-sm-7">
-                                                <input class="form-control" type="text" id="asal" name="asal">
+                                                <select class="form-control" id="asal" name="asal">
+                                                    <option value="0">Select Option</option>
+                                                    <?php 
+                                                    for ($i = 0; $i < $counter; $i++) { 
+                                                        echo '<option value="'. $idCont[$i] . '">' . $idCont[$i] . '</option>';
+                                                    }
+                                                    ?>
+                                                </select>                                            
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="trucking" class="col-4 col-form-label">Container Tujuan</label>
                                             <div class="col-sm-7">
-                                                <input class="form-control" type="text" id="tujuan" name="tujuan">
+                                                <select class="form-control" id="tujuan" name="tujuan">
+                                                    <option value="0">Select Option</option>
+                                                    <?php 
+                                                    for ($i = 0; $i < $counter; $i++) { 
+                                                        echo '<option value="'. $idCont[$i] . '">' . $idCont[$i] . '</option>';
+                                                    }
+                                                    ?>
+                                                </select>                                            
                                             </div>
                                         </div>
                                         <div class="form-group row">

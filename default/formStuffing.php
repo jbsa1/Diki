@@ -1,3 +1,15 @@
+<?php
+
+include 'koneksi.php';
+
+$sql = mysqli_query($koneksi,"SELECT idcontainer FROM inputcont");
+
+while ($row = $sql->fetch_assoc()) {
+    $idCont[] = $row['idcontainer'];
+}
+$counter = mysqli_num_rows($sql);
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -110,13 +122,20 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="type" class="col-4 col-form-label">No Container</label>
+                                            <label for="type" class="col-4 col-form-label">ID Container</label>
                                             <div class="col-sm-7">
-                                                <input class="form-control" type="text" id="container" name="container">
+                                                <select class="form-control" id="container" name="container">
+                                                    <option value="0">Select Option</option>
+                                                    <?php 
+                                                    for ($i = 0; $i < $counter; $i++) { 
+                                                        echo '<option value="'. $idCont[$i] . '">' . $idCont[$i] . '</option>';
+                                                    }
+                                                    ?>
+                                                </select>                                            
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="trucking" class="col-4 col-form-label">plat</label>
+                                            <label for="trucking" class="col-4 col-form-label">Plat</label>
                                             <div class="col-sm-7">
                                                 <input class="form-control" type="text" id="plat" name="plat">
                                             </div>

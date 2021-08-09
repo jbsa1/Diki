@@ -2,7 +2,7 @@
 include 'koneksi.php';
 
 $owner = $_POST['owner'] ;
-$idcontainer = $_POST['container'] ;
+$idcontainer = $_POST['idcontainer'] ;
 $type = $_POST['type'];
 $mulai = $_POST['mulai'];
 $selesai = $_POST['selesai'];

@@ -134,7 +134,7 @@ $counter = mysqli_num_rows($sql);
                     <div class="row">
                         <div class="col-12">
                             <div class="card-box table-responsive">
-                                <h4 class="m-t-0 header-title"><b>Data Hasil Analisis</b></h4>
+                                <h4 class="m-t-0 header-title"><b> Data Stuffing Container</b></h4>
                                 <p class="text-muted font-13 m-b-30">
                                     Record Sistem
                                 </p>
@@ -170,6 +170,7 @@ $counter = mysqli_num_rows($sql);
                                     </tbody>
                                 </table>
                             </div>
+                            <button onClick="window.print()" class="btn btn-success waves-effect waves-light m-r-30">Print</button>
                         </div>
                     </div> <!-- end row -->
 

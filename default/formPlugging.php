@@ -1,3 +1,16 @@
+<?php
+
+include 'koneksi.php';
+
+$sql = mysqli_query($koneksi,"SELECT idcontainer FROM inputcont");
+
+while ($row = $sql->fetch_assoc()) {
+    $idCont[] = $row['idcontainer'];
+}
+$counter = mysqli_num_rows($sql);
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -110,9 +123,16 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="no-container" class="col-4 col-form-label">No container</label>
+                                            <label for="no-container" class="col-4 col-form-label">ID container</label>
                                             <div class="col-sm-7">
-                                                <input class="form-control" type="text" id="no-container" name="container">
+                                                <select class="form-control" id="idcontainer" name="idcontainer">
+                                                    <option value="0">Select Option</option>
+                                                    <?php 
+                                                    for ($i = 0; $i < $counter; $i++) { 
+                                                        echo '<option value="'. $idCont[$i] . '">' . $idCont[$i] . '</option>';
+                                                    }
+                                                    ?>
+                                                </select>
                                             </div>
                                         </div>
                                                 <div class="form-group row">
@@ -124,13 +144,13 @@
                                         <div class="form-group row">
                                             <label for="mulai" class="col-4 col-form-label">Mulai</label>
                                             <div class="col-sm-7">
-                                                <input class="form-control" type="time" id="mulai" name="mulai">
+                                                <input class="form-control" type="datetime-local" id="mulai" name="mulai">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="selesai" class="col-4 col-form-label">Selesai </label>
                                             <div class="col-sm-7">
-                                                <input class="form-control" type="time" id="selesai" name="selesai">
+                                                <input class="form-control" type="datetime-local" id="selesai" name="selesai">
                                             </div>
                                         </div>
                                     <div class="form-group row">
