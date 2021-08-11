@@ -8,6 +8,7 @@ while ($row = $sql->fetch_assoc()) {
     $no[] = $row['no'];
     $owner[] = $row['owner'];
     $type[] = $row['type'];
+    $size[] = $row['size'];
     $mulai[] = $row['mulai'];
     $selesai[] = $row['selesai'];
     $remarks[] = $row['remarks'];
@@ -144,30 +145,35 @@ $counter = mysqli_num_rows($sql);
                                             <th>No.</th>
                                             <th>Owner</th>
                                             <th>Type</th>
+                                            <th>Size</th>
                                             <th>Mulai</th>
                                             <th>Selesai</th>
                                             <th>Remarks</th>
                                             <th>timestamp</th>
+                                            <th>Option</th>
 
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        <?php 
-                                        
-                                        for ($i = 0; $i < $counter; $i++) { 
-                                            echo '<tr>';
-                                            echo '<td>' . $no[$i] . '</td>';
-                                            echo '<td>' . $owner[$i] . '</td>';
-                                            echo '<td>' . $type[$i] . '</td>';
-                                            echo '<td>' . $mulai[$i] . '</td>';
-                                            echo '<td>' . $selesai[$i] . '</td>';
-                                            echo '<td>' . $remarks[$i] . '</td>';
-                                            echo '<td>' . $timestamp[$i] . '</td>';
-                                            echo '</tr>';
-                                        }
-                                        ?>
-                                    </tbody>
+                                        <div class="m-b-5 m-t-5">
+                                            <?php 
+                                            
+                                            for ($i = 0; $i < $counter; $i++) { 
+                                                echo '<tr>';
+                                                echo '<td>' . $no[$i] . '</td>';
+                                                echo '<td>' . $owner[$i] . '</td>';
+                                                echo '<td>' . $type[$i] . '</td>';
+                                                echo '<td>' . $size[$i] . '</td>';
+                                                echo '<td>' . $mulai[$i] . '</td>';
+                                                echo '<td>' . $selesai[$i] . '</td>';
+                                                echo '<td>' . $remarks[$i] . '</td>';
+                                                echo '<td>' . $timestamp[$i] . '</td>';
+                                                echo '<td align="center">' . '<a href="formplugging.php?no=' . $no[$i] . '">EDIT</a>' . '</td>';
+                                                echo '</tr>';
+                                            }
+                                            ?>
+                                        </div>
                                 </table>
                             </div>
                             <button onClick="window.print()" class="btn btn-success waves-effect waves-light m-r-30">Print</button>

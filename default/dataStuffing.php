@@ -7,6 +7,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM stuffing");
 while ($row = $sql->fetch_assoc()) {
     $no[] = $row['no'];
     $Owner[] = $row['owner'];
+    $driver[] = $row['driver'];
     $idCont[] = $row['idContainer'];
     $plat[] = $row['plat'];
     $tanggal[] = $row['tanggal'];
@@ -144,6 +145,7 @@ $counter = mysqli_num_rows($sql);
                                         <tr>
                                             <th>No.</th>
                                             <th>Owner</th>
+                                            <th>Driver</th>
                                             <th>ID Container</th>
                                             <th>Plat</th>                                             
                                             <th>Tanggal</th>                                                                                       
@@ -159,6 +161,7 @@ $counter = mysqli_num_rows($sql);
                                             echo '<tr>';
                                             echo '<td>' . $no[$i] . '</td>';
                                             echo '<td>' . $Owner[$i] . '</td>';
+                                            echo '<td>' . $driver[$i] . '</td>';
                                             echo '<td>' . $idCont[$i] . '</td>';
                                             echo '<td>' . $plat[$i] . '</td>';
                                             echo '<td>' . $tanggal[$i] . '</td>';

@@ -121,9 +121,9 @@ $counter = mysqli_num_rows($sql);
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="owner" class="col-4 col-form-label">Trucking</label>
+                                            <label for="owner" class="col-4 col-form-label">Driver</label>
                                             <div class="col-sm-7">
-                                                <input class="form-control" type="text" id="trucking" name="trucking">
+                                                <input class="form-control" type="text" id="driver" name="driver">
                                             </div>
                                         </div>
                                         <div class="form-group row">

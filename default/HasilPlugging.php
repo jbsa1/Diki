@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'koneksi.php';
 
 $owner = $_POST['owner'] ;
@@ -10,11 +11,28 @@ $selesai = $_POST['selesai'];
 $remarks = $_POST['remarks'];
 $today = date("d/m/Y g:i a");
 
-$sql = "INSERT INTO plugging (owner, idcontainer, type, size, mulai, selesai, remarks, timestamp) 
-        VALUES ('$owner','$idcontainer','$type','$size','$mulai','$selesai','$remarks',CURRENT_TIME())";
-if (!mysqli_query($koneksi,$sql)) {
-    die('Error: ' . mysqli_error($koneksi));
+if (isset($_SESSION['no'])){
+    $no = $_SESSION['no'];
+    $edit ="UPDATE plugging set 
+            owner='$owner', 
+            idcontainer='$idcontainer',
+            type='$type',
+            size='$size',
+            mulai='$mulai',
+            selesai='$selesai',
+            remarks='$remarks',
+            timestamp=CURRENT_TIME() 
+            where no='$no'";
+    if (!mysqli_query($koneksi,$edit)) {
+        die('Error: ' . mysqli_error($koneksi));
+    }   
+}else{
+    $sql = "INSERT INTO plugging (owner, idcontainer, type, size, mulai, selesai, remarks, timestamp) 
+            VALUES ('$owner','$idcontainer','$type','$size','$mulai','$selesai','$remarks',CURRENT_TIME())";
+    if (!mysqli_query($koneksi,$sql)) {
+        die('Error: ' . mysqli_error($koneksi));
 }   
+}
 
 ?>
 <!DOCTYPE html>

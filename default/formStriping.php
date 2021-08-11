@@ -115,25 +115,25 @@ $counter = mysqli_num_rows($sql);
                                     </p>
                                     <form action="hasilstriping.php" method="post">
                                         <div class="form-group row">
-                                            <label for="no-container" class="col-4 col-form-label">Owner</label>
+                                            <label for="owner" class="col-4 col-form-label">Owner</label>
                                             <div class="col-sm-7">
                                                 <input class="form-control" type="text" id="owner" name="owner">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="owner" class="col-4 col-form-label">Trucking</label>
+                                            <label for="driver" class="col-4 col-form-label">driver</label>
                                             <div class="col-sm-7">
-                                                <input class="form-control" type="text" id="trucking" name="trucking">
+                                                <input class="form-control" type="text" id="driver" name="driver">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="trucking" class="col-4 col-form-label">Plat</label>
+                                            <label for="Plat" class="col-4 col-form-label">Plat</label>
                                             <div class="col-sm-7">
                                                 <input class="form-control" type="text" id="plat" name="plat">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="type" class="col-4 col-form-label">ID Container</label>
+                                            <label for="id" class="col-4 col-form-label">ID Container</label>
                                             <div class="col-sm-7">
                                             <select class="form-control" id="container" name="container">
                                                     <option value="0">Select Option</option>
@@ -146,13 +146,13 @@ $counter = mysqli_num_rows($sql);
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="jam-mulai" class="col-4 col-form-label">Tanggal</label>
+                                            <label for="tgl" class="col-4 col-form-label">Tanggal</label>
                                             <div class="col-sm-7">
                                                 <input class="form-control" type="datetime-local" id="tanggal" name="tanggal">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="jam-selesai" class="col-4 col-form-label">Remarks </label>
+                                            <label for="remarks" class="col-4 col-form-label">Remarks </label>
                                             <div class="col-sm-7">
                                                 <input class="form-control" type="text" id="remarks" name="remarks">
                                             </div>

@@ -2,15 +2,14 @@
 include 'koneksi.php';
 
 $owner = $_POST['owner'] ;
-$trucking = $_POST['trucking'];
 $containerasal = $_POST['asal'] ;
 $containertujuan = $_POST['tujuan'];
 $tanggal = $_POST['tanggal'];
 $remarks = $_POST['remarks'];
 $today = date("d/m/Y g:i a");
 
-$sql = "INSERT INTO stuffingcon (owner,contAsal,contTujuan,tanggal,remarks,timestamp)
-        VALUES ('$owner','$trucking','$containerasal','$containertujuan','$tanggal','$remarks',CURRENT_TIME())";
+$sql = "INSERT INTO stuffingcon (owner ,contAsal,contTujuan,tanggal,remarks,timestamp)
+        VALUES ('$owner','$containerasal','$containertujuan','$tanggal','$remarks',CURRENT_TIME())";
         
 if (!mysqli_query($koneksi,$sql)) {
     die('Error: ' . mysqli_error($koneksi));
@@ -130,7 +129,6 @@ if (!mysqli_query($koneksi,$sql)) {
                                         if (isset($_POST)) {
                                             echo '<table class=table>';
                                             echo '<tr><td>' . 'Owner ' . '</td><td>' . ':' . '</td><td>' . $owner . '</td></tr>';
-                                            echo '<tr><td>' . 'Trucking ' . '</td><td>' . ':' . '</td><td>' . $trucking . '</td></tr>';
                                             echo '<tr><td>' . 'Container Asal ' . '</td><td>' . ':' . '</td><td>' . $containerasal . '</td></tr>';
                                             echo '<tr><td>' . 'Container Tujuan ' . '</td><td>' . ':' . '</td><td>' . $containertujuan . '</td></tr>';
                                             echo '<tr><td>' . 'Tanggal ' . '</td><td>' . ':' . '</td><td>' . $tanggal . '</td></tr>';

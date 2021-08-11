@@ -6,6 +6,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM Striping");
 
 while ($row = $sql->fetch_assoc()) {
     $no[] = $row['no'];
+    $driver[] = $row['driver'];
     $plat[] = $row['plat'];
     $idCont[] = $row['idContainer'];
     $Owner[] = $row['owner'];
@@ -142,9 +143,10 @@ $counter = mysqli_num_rows($sql);
                                     <thead>
                                         <tr>
                                             <th>No.</th>
+                                            <th>Owner</th>
+                                            <th>Driver</th>
                                             <th>Plat</th>
                                             <th>ID Container</th>
-                                            <th>Owner</th>
                                             <th>Tanggal</th>
                                             <th>Remarks</th>
                                             <th>Timestamp</th>
@@ -157,9 +159,10 @@ $counter = mysqli_num_rows($sql);
                                         for ($i = 0; $i < $counter; $i++) { 
                                             echo '<tr>';
                                             echo '<td>' . $no[$i] . '</td>';
+                                            echo '<td>' . $Owner[$i] . '</td>';
+                                            echo '<td>' . $driver[$i] . '</td>';
                                             echo '<td>' . $plat[$i] . '</td>';
                                             echo '<td>' . $idCont[$i] . '</td>';
-                                            echo '<td>' . $Owner[$i] . '</td>';
                                             echo '<td>' . $tanggal[$i] . '</td>';
                                             echo '<td>' . $remarks[$i] . '</td>';
                                             echo '<td>' . $timestamp[$i] . '</td>';

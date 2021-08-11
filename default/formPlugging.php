@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include 'koneksi.php';
 
 $sql = mysqli_query($koneksi,"SELECT idcontainer FROM inputcont");
@@ -8,6 +8,14 @@ while ($row = $sql->fetch_assoc()) {
     $idCont[] = $row['idcontainer'];
 }
 $counter = mysqli_num_rows($sql);
+
+if (isset($_GET['no'])){
+    $no = $_GET['no'];
+    $_SESSION['no'] = $no;
+    $sql = mysqli_query($koneksi,"SELECT * FROM plugging WHERE no='$no'");
+    $data = mysqli_fetch_array($sql);
+}
+
 
 ?>
 
@@ -119,15 +127,30 @@ $counter = mysqli_num_rows($sql);
                                         <div class="form-group row">
                                             <label for="owner" class="col-4 col-form-label">Owner / Pemilik</label>
                                             <div class="col-sm-7">
-                                                <input class="form-control" type="text" id="owner" name="owner">
+                                                <input class="form-control" type="text" id="owner" name="owner"
+                                                <?php
+                                                
+                                                if (isset($_GET['no'])){
+                                                    echo 'value="' . $data['owner'] . '"';
+                                                }else{
+                                                    echo ' ';
+                                                }
+
+                                                ?>
+                                                >
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="no-container" class="col-4 col-form-label">ID container</label>
                                             <div class="col-sm-7">
                                                 <select class="form-control" id="idcontainer" name="idcontainer">
-                                                    <option value="0">Select Option</option>
-                                                    <?php 
+                                                    <?php
+                                                    if (isset($_GET['no'])){
+                                                        echo '<option value="'. $data['idcontainer'] .'">'. $data['idcontainer'] .'</option>';
+                                                    }else{
+                                                        echo '<option value="0">Select Option</option>';
+                                                    }
+                                                     
                                                     for ($i = 0; $i < $counter; $i++) { 
                                                         echo '<option value="'. $idCont[$i] . '">' . $idCont[$i] . '</option>';
                                                     }
@@ -138,31 +161,75 @@ $counter = mysqli_num_rows($sql);
                                             <div class="form-group row">
                                                 <label for="type" class="col-4 col-form-label">Type</label>
                                                 <div class="col-sm-7">
-                                                    <input class="form-control" type="text" id="type" name="type">
+                                                    <input class="form-control" type="text" id="type" name="type"
+                                                    <?php
+                                                
+                                                    if (isset($_GET['no'])){
+                                                        echo 'value="' . $data['type'] . '"';
+                                                    }else{
+                                                        echo ' ';
+                                                    }
+
+                                                    ?>
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="type" class="col-4 col-form-label">Size</label>
                                                 <div class="col-sm-7">
-                                                    <input class="form-control" type="text" id="size" name="size">
+                                                    <input class="form-control" type="text" id="size" name="size"
+                                                    <?php
+                                                    
+                                                    if (isset($_GET['no'])){
+                                                        echo 'value="' . $data['size'] . '"';
+                                                    }else{
+                                                        echo ' ';
+                                                    }
+
+                                                    ?>
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="mulai" class="col-4 col-form-label">Mulai</label>
                                                 <div class="col-sm-7">
-                                                    <input class="form-control" type="datetime-local" id="mulai" name="mulai">
+                                                    <input class="form-control" type="datetime-local" id="mulai" name="mulai"
+                                                    <?php
+                                                    
+                                                    if (isset($_GET['no'])){
+                                                        echo 'value="' . date('Y-m-d\TH:i:s', strtotime($data['mulai'])) . '"';
+                                                    }
+                                                    ?>
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="selesai" class="col-4 col-form-label">Selesai </label>
                                                 <div class="col-sm-7">
-                                                    <input class="form-control" type="datetime-local" id="selesai" name="selesai">
+                                                    <input class="form-control" type="datetime-local" id="selesai" name="selesai"
+                                                    <?php
+                                                    
+                                                    if (isset($_GET['no'])){
+                                                        echo 'value="' . date('Y-m-d\TH:i:s', strtotime($data['mulai'])) . '"';
+                                                    }
+                                                    ?>
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="remarks" class="col-4 col-form-label">Remarks</label>
                                                 <div class="col-sm-7">
-                                                    <input class="form-control" type="text" id="remarks" name="remarks">
+                                                    <input class="form-control" type="text" id="remarks" name="remarks"
+                                                    <?php
+                                                    
+                                                    if (isset($_GET['no'])){
+                                                        echo 'value="' . $data['remarks'] . '"';
+                                                    }else{
+                                                        echo ' ';
+                                                    }
+
+                                                    ?>
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="form-group text-right m-b-0 pt-2">
