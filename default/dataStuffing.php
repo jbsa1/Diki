@@ -8,6 +8,7 @@ while ($row = $sql->fetch_assoc()) {
     $no[] = $row['no'];
     $Owner[] = $row['owner'];
     $driver[] = $row['driver'];
+    $trucking[] = $row['trucking'];
     $idCont[] = $row['idContainer'];
     $plat[] = $row['plat'];
     $tanggal[] = $row['tanggal'];
@@ -146,6 +147,7 @@ $counter = mysqli_num_rows($sql);
                                             <th>No.</th>
                                             <th>Owner</th>
                                             <th>Driver</th>
+                                            <th>Trucking</th>
                                             <th>ID Container</th>
                                             <th>Plat</th>                                             
                                             <th>Tanggal</th>                                                                                       
@@ -162,6 +164,7 @@ $counter = mysqli_num_rows($sql);
                                             echo '<td>' . $no[$i] . '</td>';
                                             echo '<td>' . $Owner[$i] . '</td>';
                                             echo '<td>' . $driver[$i] . '</td>';
+                                            echo '<td>' . $trucking[$i] . '</td>';
                                             echo '<td>' . $idCont[$i] . '</td>';
                                             echo '<td>' . $plat[$i] . '</td>';
                                             echo '<td>' . $tanggal[$i] . '</td>';

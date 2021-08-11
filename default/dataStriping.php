@@ -7,6 +7,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM Striping");
 while ($row = $sql->fetch_assoc()) {
     $no[] = $row['no'];
     $driver[] = $row['driver'];
+    $trucking[] = $row['trucking'];
     $plat[] = $row['plat'];
     $idCont[] = $row['idContainer'];
     $Owner[] = $row['owner'];
@@ -145,6 +146,7 @@ $counter = mysqli_num_rows($sql);
                                             <th>No.</th>
                                             <th>Owner</th>
                                             <th>Driver</th>
+                                            <th>Trucking</th>
                                             <th>Plat</th>
                                             <th>ID Container</th>
                                             <th>Tanggal</th>
@@ -161,6 +163,7 @@ $counter = mysqli_num_rows($sql);
                                             echo '<td>' . $no[$i] . '</td>';
                                             echo '<td>' . $Owner[$i] . '</td>';
                                             echo '<td>' . $driver[$i] . '</td>';
+                                            echo '<td>' . $trucking[$i] . '</td>';
                                             echo '<td>' . $plat[$i] . '</td>';
                                             echo '<td>' . $idCont[$i] . '</td>';
                                             echo '<td>' . $tanggal[$i] . '</td>';
