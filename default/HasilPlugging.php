@@ -26,6 +26,7 @@ if (isset($_SESSION['no'])){
     if (!mysqli_query($koneksi,$edit)) {
         die('Error: ' . mysqli_error($koneksi));
     }   
+    session_destroy();
 }else{
     $sql = "INSERT INTO plugging (owner, idcontainer, type, size, mulai, selesai, remarks, timestamp) 
             VALUES ('$owner','$idcontainer','$type','$size','$mulai','$selesai','$remarks',CURRENT_TIME())";

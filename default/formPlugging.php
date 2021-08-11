@@ -166,10 +166,7 @@ if (isset($_GET['no'])){
                                                 
                                                     if (isset($_GET['no'])){
                                                         echo 'value="' . $data['type'] . '"';
-                                                    }else{
-                                                        echo ' ';
-                                                    }
-
+                                                    } 
                                                     ?>
                                                     >
                                                 </div>
@@ -182,10 +179,7 @@ if (isset($_GET['no'])){
                                                     
                                                     if (isset($_GET['no'])){
                                                         echo 'value="' . $data['size'] . '"';
-                                                    }else{
-                                                        echo ' ';
-                                                    }
-
+                                                    } 
                                                     ?>
                                                     >
                                                 </div>
@@ -210,7 +204,7 @@ if (isset($_GET['no'])){
                                                     <?php
                                                     
                                                     if (isset($_GET['no'])){
-                                                        echo 'value="' . date('Y-m-d\TH:i:s', strtotime($data['mulai'])) . '"';
+                                                        echo 'value="' . date('Y-m-d\TH:i:s', strtotime($data['selesai'])) . '"';
                                                     }
                                                     ?>
                                                     >
@@ -224,10 +218,7 @@ if (isset($_GET['no'])){
                                                     
                                                     if (isset($_GET['no'])){
                                                         echo 'value="' . $data['remarks'] . '"';
-                                                    }else{
-                                                        echo ' ';
-                                                    }
-
+                                                    } 
                                                     ?>
                                                     >
                                                 </div>

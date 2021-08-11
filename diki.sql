@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2021 at 11:12 AM
+-- Generation Time: Aug 11, 2021 at 09:43 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -38,8 +38,8 @@ CREATE TABLE `inputcont` (
 --
 
 INSERT INTO `inputcont` (`idcontainer`, `owner`, `timestamp`) VALUES
-('TEST-123456', 'Januar', '2021-08-08 16:03:59'),
-('TEST-1234567', 'Januar', '2021-08-08 22:45:47');
+('TEST-1234567', 'Januar', '2021-08-11 21:34:30'),
+('TSET-121234', 'Jaf', '2021-08-11 21:34:54');
 
 -- --------------------------------------------------------
 
@@ -52,8 +52,9 @@ CREATE TABLE `plugging` (
   `owner` varchar(50) DEFAULT NULL,
   `idcontainer` varchar(11) DEFAULT NULL,
   `type` char(10) DEFAULT NULL,
-  `mulai` time DEFAULT NULL,
-  `selesai` time DEFAULT NULL,
+  `size` varchar(20) NOT NULL,
+  `mulai` datetime DEFAULT NULL,
+  `selesai` datetime DEFAULT NULL,
   `remarks` varchar(50) DEFAULT NULL,
   `timestamp` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -62,8 +63,8 @@ CREATE TABLE `plugging` (
 -- Dumping data for table `plugging`
 --
 
-INSERT INTO `plugging` (`no`, `owner`, `idcontainer`, `type`, `mulai`, `selesai`, `remarks`, `timestamp`) VALUES
-(1, 'Januar', 'BLDU-192142', 'truk', '16:10:00', '17:10:00', 'kentekan bensin', '2021-08-08 16:31:23');
+INSERT INTO `plugging` (`no`, `owner`, `idcontainer`, `type`, `size`, `mulai`, `selesai`, `remarks`, `timestamp`) VALUES
+(1, 'Januar', 'TEST-123456', 'truk', 'cilik gyet', '2021-08-12 21:36:00', '2021-08-11 22:43:00', 'kentekan bensin', '2021-08-11 21:43:27');
 
 -- --------------------------------------------------------
 
@@ -76,6 +77,7 @@ CREATE TABLE `striping` (
   `plat` varchar(10) DEFAULT NULL,
   `idContainer` varchar(11) DEFAULT NULL,
   `owner` varchar(50) DEFAULT NULL,
+  `driver` varchar(20) NOT NULL,
   `tanggal` datetime DEFAULT NULL,
   `remarks` varchar(50) DEFAULT NULL,
   `timestamp` datetime DEFAULT NULL
@@ -85,8 +87,8 @@ CREATE TABLE `striping` (
 -- Dumping data for table `striping`
 --
 
-INSERT INTO `striping` (`no`, `plat`, `idContainer`, `owner`, `tanggal`, `remarks`, `timestamp`) VALUES
-(1, 'L 1234 WS', 'TEST-123456', 'Januar', '2021-08-07 07:50:00', 'ngedukno barang', '2021-08-08 19:51:08');
+INSERT INTO `striping` (`no`, `plat`, `idContainer`, `owner`, `driver`, `tanggal`, `remarks`, `timestamp`) VALUES
+(1, 'L 1234 WS', 'TEST-123456', 'Januar', 'Mukidi', '2021-08-11 21:41:00', 'ngedukno barang', '2021-08-11 21:41:09');
 
 -- --------------------------------------------------------
 
@@ -97,6 +99,7 @@ INSERT INTO `striping` (`no`, `plat`, `idContainer`, `owner`, `tanggal`, `remark
 CREATE TABLE `stuffing` (
   `no` int(11) NOT NULL,
   `owner` varchar(50) DEFAULT NULL,
+  `driver` varchar(20) NOT NULL,
   `idContainer` varchar(11) DEFAULT NULL,
   `plat` varchar(10) DEFAULT NULL,
   `tanggal` datetime DEFAULT NULL,
@@ -108,9 +111,8 @@ CREATE TABLE `stuffing` (
 -- Dumping data for table `stuffing`
 --
 
-INSERT INTO `stuffing` (`no`, `owner`, `idContainer`, `plat`, `tanggal`, `remarks`, `timestamp`) VALUES
-(2, 'Januar', 'TEST-123456', 'L 1234 WS', '2021-08-08 16:00:00', 'ngedukno barang', '2021-08-08 18:37:20'),
-(5, 'Januar', 'TEST-123456', 'L 1234 WS', '2021-08-05 19:46:00', 'munggahno barang', '2021-08-08 19:50:37');
+INSERT INTO `stuffing` (`no`, `owner`, `driver`, `idContainer`, `plat`, `tanggal`, `remarks`, `timestamp`) VALUES
+(1, 'Jaf', 'Budi', 'TSET-121234', 'L 1234 WS', '2021-08-11 21:39:00', 'munggahno barang', '2021-08-11 21:40:40');
 
 -- --------------------------------------------------------
 
@@ -133,7 +135,7 @@ CREATE TABLE `stuffingcon` (
 --
 
 INSERT INTO `stuffingcon` (`no`, `owner`, `contAsal`, `contTujuan`, `tanggal`, `remarks`, `timestamp`) VALUES
-(1, 'Januar', 'TEST-123456', 'TEST-654321', '2021-08-07 06:39:00', 'pindahin barang kare', '2021-08-08 18:44:37');
+(1, 'Januar', 'TEST-123456', 'TSET-121234', '2021-08-11 21:39:00', 'pindahin barang karena ban bocor', '2021-08-11 21:39:38');
 
 --
 -- Indexes for dumped tables
@@ -177,25 +179,25 @@ ALTER TABLE `stuffingcon`
 -- AUTO_INCREMENT for table `plugging`
 --
 ALTER TABLE `plugging`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `striping`
 --
 ALTER TABLE `striping`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `stuffing`
 --
 ALTER TABLE `stuffing`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `stuffingcon`
 --
 ALTER TABLE `stuffingcon`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
