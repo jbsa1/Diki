@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 11, 2021 at 09:43 PM
+-- Generation Time: Aug 11, 2021 at 10:46 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -78,6 +78,7 @@ CREATE TABLE `striping` (
   `idContainer` varchar(11) DEFAULT NULL,
   `owner` varchar(50) DEFAULT NULL,
   `driver` varchar(20) NOT NULL,
+  `trucking` varchar(20) NOT NULL,
   `tanggal` datetime DEFAULT NULL,
   `remarks` varchar(50) DEFAULT NULL,
   `timestamp` datetime DEFAULT NULL
@@ -87,8 +88,9 @@ CREATE TABLE `striping` (
 -- Dumping data for table `striping`
 --
 
-INSERT INTO `striping` (`no`, `plat`, `idContainer`, `owner`, `driver`, `tanggal`, `remarks`, `timestamp`) VALUES
-(1, 'L 1234 WS', 'TEST-123456', 'Januar', 'Mukidi', '2021-08-11 21:41:00', 'ngedukno barang', '2021-08-11 21:41:09');
+INSERT INTO `striping` (`no`, `plat`, `idContainer`, `owner`, `driver`, `trucking`, `tanggal`, `remarks`, `timestamp`) VALUES
+(1, 'L 1234 WS', 'TEST-123456', 'Januar', 'Mukidi', '', '2021-08-11 21:41:00', 'ngedukno barang', '2021-08-11 21:41:09'),
+(2, 'L 1234 WS', 'TSET-121234', 'Jaf', 'Budi', 'Sayurbox', '2021-08-11 22:44:00', 'ngedukno barang', '2021-08-11 22:44:56');
 
 -- --------------------------------------------------------
 
@@ -100,6 +102,7 @@ CREATE TABLE `stuffing` (
   `no` int(11) NOT NULL,
   `owner` varchar(50) DEFAULT NULL,
   `driver` varchar(20) NOT NULL,
+  `trucking` varchar(20) NOT NULL,
   `idContainer` varchar(11) DEFAULT NULL,
   `plat` varchar(10) DEFAULT NULL,
   `tanggal` datetime DEFAULT NULL,
@@ -111,8 +114,9 @@ CREATE TABLE `stuffing` (
 -- Dumping data for table `stuffing`
 --
 
-INSERT INTO `stuffing` (`no`, `owner`, `driver`, `idContainer`, `plat`, `tanggal`, `remarks`, `timestamp`) VALUES
-(1, 'Jaf', 'Budi', 'TSET-121234', 'L 1234 WS', '2021-08-11 21:39:00', 'munggahno barang', '2021-08-11 21:40:40');
+INSERT INTO `stuffing` (`no`, `owner`, `driver`, `trucking`, `idContainer`, `plat`, `tanggal`, `remarks`, `timestamp`) VALUES
+(1, 'Jaf', 'Budi', '', 'TSET-121234', 'L 1234 WS', '2021-08-11 21:39:00', 'munggahno barang', '2021-08-11 21:40:40'),
+(2, 'Januar', 'Mukidi', 'Sayurbox', 'TEST-123456', 'L 1234 WS', '2021-08-11 22:44:00', 'munggahno barang', '2021-08-11 22:44:22');
 
 -- --------------------------------------------------------
 
@@ -185,13 +189,13 @@ ALTER TABLE `plugging`
 -- AUTO_INCREMENT for table `striping`
 --
 ALTER TABLE `striping`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `stuffing`
 --
 ALTER TABLE `stuffing`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `stuffingcon`
