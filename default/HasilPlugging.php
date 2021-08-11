@@ -4,13 +4,14 @@ include 'koneksi.php';
 $owner = $_POST['owner'] ;
 $idcontainer = $_POST['idcontainer'] ;
 $type = $_POST['type'];
+$size = $_POST['size'];
 $mulai = $_POST['mulai'];
 $selesai = $_POST['selesai'];
 $remarks = $_POST['remarks'];
 $today = date("d/m/Y g:i a");
 
-$sql = "INSERT INTO plugging (owner, idcontainer, type, mulai, selesai, remarks, timestamp) 
-        VALUES ('$owner','$idcontainer','$type','$mulai','$selesai','$remarks',CURRENT_TIME())";
+$sql = "INSERT INTO plugging (owner, idcontainer, type, size, mulai, selesai, remarks, timestamp) 
+        VALUES ('$owner','$idcontainer','$type','$size','$mulai','$selesai','$remarks',CURRENT_TIME())";
 if (!mysqli_query($koneksi,$sql)) {
     die('Error: ' . mysqli_error($koneksi));
 }   
@@ -129,6 +130,7 @@ if (!mysqli_query($koneksi,$sql)) {
                                             echo '<tr><td>' . 'Owner/Pemilik ' . '</td><td>' . ':' . '</td><td>' . $owner . '</td></tr>';
                                             echo '<tr><td>' . 'No Container ' . '</td><td>' . ':' . '</td><td>' . $idcontainer . '</td></tr>';
                                             echo '<tr><td>' . 'Type ' . '</td><td>' . ':' . '</td><td>' . $type . '</td></tr>';
+                                            echo '<tr><td>' . 'Size ' . '</td><td>' . ':' . '</td><td>' . $size . '</td></tr>';
                                             echo '<tr><td>' . 'Mulai ' . '</td><td>' . ':' . '</td><td>' . $mulai . '</td></tr>';
                                             echo '<tr><td>' . 'Selesai ' . '</td><td>' . ':' . '</td><td>' . $selesai . '</td></tr>';
                                             echo '<tr><td>' . 'Remarks ' . '</td><td>' . ':' . '</td><td>' . $remarks . '</td></tr>';

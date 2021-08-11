@@ -107,13 +107,25 @@ $counter = mysqli_num_rows($sql);
                 <div class="content pt-5">
                     <div class="container-fluid pt-1">
 						<div class="d-flex justify-content-center">
-						    <div class="col-lg-11">
+						    <div class="col-lg-10">
                                 <div class="card-box">
                                     <h4 class="header-title m-t-0">Striping</h4>
                                     <p class="text-muted font-14 m-b-20">
                                         Silahkan isi data Striping 
                                     </p>
                                     <form action="hasilstriping.php" method="post">
+                                        <div class="form-group row">
+                                            <label for="no-container" class="col-4 col-form-label">Owner</label>
+                                            <div class="col-sm-7">
+                                                <input class="form-control" type="text" id="owner" name="owner">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="owner" class="col-4 col-form-label">Trucking</label>
+                                            <div class="col-sm-7">
+                                                <input class="form-control" type="text" id="trucking" name="trucking">
+                                            </div>
+                                        </div>
                                         <div class="form-group row">
                                             <label for="trucking" class="col-4 col-form-label">Plat</label>
                                             <div class="col-sm-7">
@@ -131,12 +143,6 @@ $counter = mysqli_num_rows($sql);
                                                     }
                                                     ?>
                                                 </select>                                            
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="no-container" class="col-4 col-form-label">Owner</label>
-                                            <div class="col-sm-7">
-                                                <input class="form-control" type="text" id="owner" name="owner">
                                             </div>
                                         </div>
                                         <div class="form-group row">

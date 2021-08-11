@@ -4,12 +4,13 @@ include 'koneksi.php';
 $plat = $_POST['plat'];
 $noContainer = $_POST['container'] ;
 $owner = $_POST['owner'] ;
+$trucking = $_POST['trucking'];
 $tanggal = $_POST['tanggal'];
 $remarks = $_POST['remarks'];
 $today = date("d/m/Y g:i a");
 
-$sql = "INSERT INTO striping (plat,idContainer,owner,tanggal,remarks,timestamp	)
-        VALUES ('$plat', '$noContainer', '$owner', '$tanggal','$remarks',CURRENT_TIME()) ";
+$sql = "INSERT INTO striping (plat,idContainer,owner, trucking ,tanggal,remarks,timestamp	)
+        VALUES ('$plat', '$noContainer', '$owner', '$trucking', '$tanggal','$remarks',CURRENT_TIME()) ";
 
 if (!mysqli_query($koneksi,$sql)) {
     die('Error: ' . mysqli_error($koneksi));
@@ -127,6 +128,7 @@ if (!mysqli_query($koneksi,$sql)) {
                                         if (isset($_POST)) {
                                             echo '<table class=table>';
                                             echo '<tr><td>' . 'Owner ' . '</td><td>' . ':' . '</td><td>' . $owner . '</td></tr>';
+                                            echo '<tr><td>' . 'Trucking ' . '</td><td>' . ':' . '</td><td>' . $trucking . '</td></tr>';
                                             echo '<tr><td>' . 'No Container ' . '</td><td>' . ':' . '</td><td>' . $noContainer . '</td></tr>';
                                             echo '<tr><td>' . 'Plat ' . '</td><td>' . ':' . '</td><td>' . $plat . '</td></tr>';
                                             echo '<tr><td>' . 'Tanggal ' . '</td><td>' . ':' . '</td><td>' . $tanggal . '</td></tr>';

@@ -107,7 +107,6 @@ $counter = mysqli_num_rows($sql);
                 <div class="content pt-5">
                     <div class="container-fluid pt-1">
 						<div class="d-flex justify-content-center">
-							
 						 <div class="col-lg-10">
                                 <div class="card-box">
                                     <h4 class="header-title m-t-0">Stuffing</h4>
@@ -122,6 +121,12 @@ $counter = mysqli_num_rows($sql);
                                             </div>
                                         </div>
                                         <div class="form-group row">
+                                            <label for="owner" class="col-4 col-form-label">Trucking</label>
+                                            <div class="col-sm-7">
+                                                <input class="form-control" type="text" id="trucking" name="trucking">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <label for="type" class="col-4 col-form-label">ID Container</label>
                                             <div class="col-sm-7">
                                                 <select class="form-control" id="container" name="container">
@@ -131,7 +136,7 @@ $counter = mysqli_num_rows($sql);
                                                         echo '<option value="'. $idCont[$i] . '">' . $idCont[$i] . '</option>';
                                                     }
                                                     ?>
-                                                </select>                                            
+                                                </select>                                           
                                             </div>
                                         </div>
                                         <div class="form-group row">

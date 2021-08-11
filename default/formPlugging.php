@@ -105,11 +105,11 @@ $counter = mysqli_num_rows($sql);
             <!-- Start right Content here -->
           <div class="content-page pt-1">
                 <!-- Start content -->
-                <div class="content pt-5">
+                <div class="content pt-4">
                     <div class="container-fluid pt-1">
 						<div class="d-flex justify-content-center">
 							
-						 <div class="col-lg-10">
+						 <div class="col-lg-11">
                                 <div class="card-box">
                                     <h4 class="header-title m-t-0">Plugging</h4>
                                     <p class="text-muted font-14 m-b-20">
@@ -132,40 +132,45 @@ $counter = mysqli_num_rows($sql);
                                                         echo '<option value="'. $idCont[$i] . '">' . $idCont[$i] . '</option>';
                                                     }
                                                     ?>
-                                                </select>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                                <div class="form-group row">
-                                            <label for="type" class="col-4 col-form-label">Type</label>
-                                            <div class="col-sm-7">
-                                                <input class="form-control" type="text" id="type" name="type">
+                                            <div class="form-group row">
+                                                <label for="type" class="col-4 col-form-label">Type</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" type="text" id="type" name="type">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="mulai" class="col-4 col-form-label">Mulai</label>
-                                            <div class="col-sm-7">
-                                                <input class="form-control" type="datetime-local" id="mulai" name="mulai">
+                                            <div class="form-group row">
+                                                <label for="type" class="col-4 col-form-label">Size</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" type="text" id="size" name="size">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="selesai" class="col-4 col-form-label">Selesai </label>
-                                            <div class="col-sm-7">
-                                                <input class="form-control" type="datetime-local" id="selesai" name="selesai">
+                                            <div class="form-group row">
+                                                <label for="mulai" class="col-4 col-form-label">Mulai</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" type="datetime-local" id="mulai" name="mulai">
+                                                </div>
                                             </div>
-                                        </div>
-                                    <div class="form-group row">
-                                        <label for="remarks" class="col-4 col-form-label">Remarks</label>
-                                        <div class="col-sm-7">
-                                            <input class="form-control" type="text" id="remarks" name="remarks">
-                                        </div>
-                                    </div>
-                                    <div class="form-group text-right m-b-0 pt-2">
-                                        <button class="btn btn-primary waves-effect waves-light" type="submit">
-                                            Submit
-                                        </button>
-                                    </div>
-                                    </form>
-
+                                            <div class="form-group row">
+                                                <label for="selesai" class="col-4 col-form-label">Selesai </label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" type="datetime-local" id="selesai" name="selesai">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="remarks" class="col-4 col-form-label">Remarks</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" type="text" id="remarks" name="remarks">
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-right m-b-0 pt-2">
+                                                <button class="btn btn-primary waves-effect waves-light" type="submit">
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        </form>
                                     <div class="visible-lg" style="height: 10px;"></div>
                                 </div></div>
 
