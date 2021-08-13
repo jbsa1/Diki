@@ -135,10 +135,11 @@ $counter = mysqli_num_rows($sql);
                                 <table id="container" class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>id Container.</th>
+                                            <th>No.</th>
+                                            <th>id Container</th>
                                             <th>Owner</th>
-                                            <th>timestamp</th>
-
+                                            <th>Timestamp</th>
+                                            <th>Option</th>
                                         </tr>
                                     </thead>
 
@@ -146,10 +147,13 @@ $counter = mysqli_num_rows($sql);
                                         <?php 
                                         
                                         for ($i = 0; $i < $counter; $i++) { 
+                                            $nomer = $i + 1;
                                             echo '<tr>';
+                                            echo '<td>' . $nomer . '</td>';
                                             echo '<td>' . $idCont[$i] . '</td>';
                                             echo '<td>' . $owner[$i] . '</td>';
                                             echo '<td>' . $timestamp[$i] . '</td>';
+                                            echo '<td align="center">' . '<a href="formInputCon.php?no=' . $idCont[$i] . '">EDIT</a>' . '</td>';
                                             echo '</tr>';
                                         }
                                         ?>

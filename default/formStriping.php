@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include 'koneksi.php';
 
 $sql = mysqli_query($koneksi,"SELECT idcontainer FROM inputcont");
@@ -8,6 +8,13 @@ while ($row = $sql->fetch_assoc()) {
     $idCont[] = $row['idcontainer'];
 }
 $counter = mysqli_num_rows($sql);
+
+if (isset($_GET['no'])){
+    $no = $_GET['no'];
+    $_SESSION['no'] = $no;
+    $sql = mysqli_query($koneksi,"SELECT * FROM striping WHERE no='$no'");
+    $data = mysqli_fetch_array($sql);
+}
 
 ?>
 <!DOCTYPE html>
@@ -117,50 +124,91 @@ $counter = mysqli_num_rows($sql);
                                         <div class="form-group row">
                                             <label for="owner" class="col-4 col-form-label">Owner</label>
                                             <div class="col-sm-7">
-                                                <input class="form-control" type="text" id="owner" name="owner">
+                                                <input class="form-control" type="text" id="owner" name="owner"
+                                                <?php
+                                                if (isset($_GET['no'])){
+                                                    echo 'value="' . $data['owner'] . '"';
+                                                }
+                                                ?>
+                                                >
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="driver" class="col-4 col-form-label">Driver</label>
                                             <div class="col-sm-7">
-                                                <input class="form-control" type="text" id="driver" name="driver">
+                                                <input class="form-control" type="text" id="driver" name="driver"
+                                                <?php
+                                                if (isset($_GET['no'])){
+                                                    echo 'value="' . $data['driver'] . '"';
+                                                }
+                                                ?>
+                                                >
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="driver" class="col-4 col-form-label">Trucking</label>
                                             <div class="col-sm-7">
-                                                <input class="form-control" type="text" id="trucking" name="trucking">
+                                                <input class="form-control" type="text" id="trucking" name="trucking"
+                                                <?php
+                                                if (isset($_GET['no'])){
+                                                    echo 'value="' . $data['trucking'] . '"';
+                                                }
+                                                ?>
+                                                >
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="Plat" class="col-4 col-form-label">Plat</label>
                                             <div class="col-sm-7">
-                                                <input class="form-control" type="text" id="plat" name="plat">
+                                                <input class="form-control" type="text" id="plat" name="plat"
+                                                <?php
+                                                if (isset($_GET['no'])){
+                                                    echo 'value="' . $data['plat'] . '"';
+                                                }
+                                                ?>
+                                                >
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="id" class="col-4 col-form-label">ID Container</label>
+                                            <label for="no-container" class="col-4 col-form-label">ID container</label>
                                             <div class="col-sm-7">
-                                            <select class="form-control" id="container" name="container">
-                                                    <option value="0">Select Option</option>
-                                                    <?php 
+                                                <select class="form-control" id="idcontainer" name="idcontainer">
+                                                    <?php
+                                                    if (isset($_GET['no'])){
+                                                        echo '<option value="'. $data['idcontainer'] .'">'. $data['idcontainer'] .'</option>';
+                                                    }else{
+                                                        echo '<option value="0">Select Option</option>';
+                                                    }
+                                                     
                                                     for ($i = 0; $i < $counter; $i++) { 
                                                         echo '<option value="'. $idCont[$i] . '">' . $idCont[$i] . '</option>';
                                                     }
                                                     ?>
-                                                </select>                                            
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="tgl" class="col-4 col-form-label">Tanggal</label>
                                             <div class="col-sm-7">
-                                                <input class="form-control" type="datetime-local" id="tanggal" name="tanggal">
+                                                <input class="form-control" type="datetime-local" id="tanggal" name="tanggal"
+                                                <?php 
+                                                if (isset($_GET['no'])){
+                                                   echo 'value="' . date('Y-m-d\TH:i:s', strtotime($data['tanggal'])) . '"';
+                                                }
+                                                ?>
+                                                >
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="remarks" class="col-4 col-form-label">Remarks </label>
                                             <div class="col-sm-7">
-                                                <input class="form-control" type="text" id="remarks" name="remarks">
+                                                <input class="form-control" type="text" id="remarks" name="remarks"
+                                                <?php
+                                                if (isset($_GET['no'])){
+                                                    echo 'value="' . $data['remarks'] . '"';
+                                                }
+                                                ?>
+                                                >
                                             </div>
                                         </div>
                                         <div class="form-group text-right m-b-0 pt-2">

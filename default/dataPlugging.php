@@ -7,6 +7,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM plugging");
 while ($row = $sql->fetch_assoc()) {
     $no[] = $row['no'];
     $owner[] = $row['owner'];
+    $idcont[] = $row['idcontainer'];
     $type[] = $row['type'];
     $size[] = $row['size'];
     $mulai[] = $row['mulai'];
@@ -144,6 +145,7 @@ $counter = mysqli_num_rows($sql);
                                         <tr>
                                             <th>No.</th>
                                             <th>Owner</th>
+                                            <th>ID Cont</th>
                                             <th>Type</th>
                                             <th>Size</th>
                                             <th>Mulai</th>
@@ -160,9 +162,11 @@ $counter = mysqli_num_rows($sql);
                                             <?php 
                                             
                                             for ($i = 0; $i < $counter; $i++) { 
+                                                $nomer = $i + 1;
                                                 echo '<tr>';
-                                                echo '<td>' . $no[$i] . '</td>';
+                                                echo '<td>' . $nomer . '</td>';
                                                 echo '<td>' . $owner[$i] . '</td>';
+                                                echo '<td>' . $idcont[$i] . '</td>';
                                                 echo '<td>' . $type[$i] . '</td>';
                                                 echo '<td>' . $size[$i] . '</td>';
                                                 echo '<td>' . $mulai[$i] . '</td>';

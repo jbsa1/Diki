@@ -7,6 +7,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM stuffingCon");
 while ($row = $sql->fetch_assoc()) {
     $no[] = $row['no'];
     $Owner[] = $row['owner'];
+    $driver[] = $row['driver'];
     $asal[] = $row['contAsal'];
     $tujuan[] = $row['contTujuan'];
     $tanggal[] = $row['tanggal'];
@@ -144,11 +145,13 @@ $counter = mysqli_num_rows($sql);
                                         <tr>
                                             <th>No.</th>
                                             <th>Owner</th>
+                                            <th>Driver</th>
                                             <th>Cont. Asal</th>
                                             <th>Cont. Tujuan</th>                                             
                                             <th>Tanggal</th>                                                                                       
                                             <th>Remarks</th>
                                             <th>Timestamp</th>
+                                            <th>Option</th>
                                         </tr>
                                     </thead>
 
@@ -156,16 +159,19 @@ $counter = mysqli_num_rows($sql);
                                         <?php 
                                         
                                         for ($i = 0; $i < $counter; $i++) { 
+                                            $nomer = $i + 1;
                                             echo '<tr>';
-                                            echo '<td>' . $no[$i] . '</td>';
+                                            echo '<td>' . $nomer . '</td>';
                                             echo '<td>' . $Owner[$i] . '</td>';
+                                            echo '<td>' . $driver[$i] . '</td>';
                                             echo '<td>' . $asal[$i] . '</td>';
                                             echo '<td>' . $tujuan[$i] . '</td>';
                                             echo '<td>' . $tanggal[$i] . '</td>';
                                             echo '<td>' . $remarks[$i] . '</td>';
                                             echo '<td>' . $timestamp[$i] . '</td>';
+                                            echo '<td align="center">' . '<a href="formstuffingcon.php?no=' . $no[$i] . '">EDIT</a>' . '</td>';
                                             echo '</tr>';
-                                        }
+                                            }
                                         ?>
                                     </tbody>
                                 </table>

@@ -1,16 +1,29 @@
 <?php
+session_start();
 include 'koneksi.php';
 
-$idcontainer = $_POST['idhuruf']. '-' .$_POST['idnomer'];
+$idCont = $_POST['idhuruf']. '-' .$_POST['idnomer'];
 $owner = $_POST['owner'];
 $timestamp = date("d/m/Y g:i a");
 
-$sql = "INSERT INTO inputcont (idcontainer, owner, timestamp) 
-        VALUES ('$idcontainer', '$owner', CURRENT_TIME())";
-if (!mysqli_query($koneksi,$sql)) {
-    die('Error: ' . mysqli_error($koneksi));
+if (isset($_SESSION['no'])){
+    $no = $_SESSION['no'];
+    $edit ="UPDATE inputcont set 
+            idcontainer='$idCont',
+            owner='$owner', 
+            timestamp=CURRENT_TIME() 
+            where idcontainer='$no'";
+    if (!mysqli_query($koneksi,$edit)) {
+        die('Error: ' . mysqli_error($koneksi));
+    }   
+    session_destroy();
+}else{
+    $sql = "INSERT INTO inputcont (idcontainer, owner, timestamp) 
+        VALUES ('$idCont', '$owner', CURRENT_TIME())";
+    if (!mysqli_query($koneksi,$sql)) {
+        die('Error: ' . mysqli_error($koneksi));
 }
-
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -123,7 +136,7 @@ if (!mysqli_query($koneksi,$sql)) {
 
                                         if (isset($_POST)) {
                                             echo '<table class=table>';
-                                            echo '<tr><td>' . 'No container ' . '</td><td>' . ':' . '</td><td>' . $idcontainer . '</td></tr>';
+                                            echo '<tr><td>' . 'No container ' . '</td><td>' . ':' . '</td><td>' . $idCont . '</td></tr>';
                                             echo '<tr><td>' . 'Type ' . '</td><td>' . ':' . '</td><td>' . $owner . '</td></tr>';
                                             echo '<tr><td>' . 'Timestamp ' . '</td><td>' . ':' . '</td><td>' . $today . '</td></tr>';
                                             echo '</table>';

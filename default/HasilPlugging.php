@@ -32,7 +32,7 @@ if (isset($_SESSION['no'])){
             VALUES ('$owner','$idcontainer','$type','$size','$mulai','$selesai','$remarks',CURRENT_TIME())";
     if (!mysqli_query($koneksi,$sql)) {
         die('Error: ' . mysqli_error($koneksi));
-}   
+    }   
 }
 
 ?>

@@ -1,20 +1,38 @@
 <?php
+session_start();
 include 'koneksi.php';
 
-$owner = $_POST['owner'] ;
+$owner = $_POST['owner'];
+$driver = $_POST['driver'];
 $containerasal = $_POST['asal'] ;
 $containertujuan = $_POST['tujuan'];
 $tanggal = $_POST['tanggal'];
 $remarks = $_POST['remarks'];
 $today = date("d/m/Y g:i a");
 
-$sql = "INSERT INTO stuffingcon (owner ,contAsal,contTujuan,tanggal,remarks,timestamp)
-        VALUES ('$owner','$containerasal','$containertujuan','$tanggal','$remarks',CURRENT_TIME())";
+if (isset($_SESSION['no'])){
+    $no = $_SESSION['no'];
+    $edit ="UPDATE stuffingcon set 
+            owner='$owner',
+            driver='$driver',
+            contAsal='$containerasal',
+            contTujuan='$containertujuan',
+            tanggal='$tanggal',
+            remarks='$remarks',
+            timestamp=CURRENT_TIME() 
+            where no='$no'";
+    if (!mysqli_query($koneksi,$edit)) {
+        die('Error: ' . mysqli_error($koneksi));
+    }   
+    session_destroy();
+}else{
+    $sql = "INSERT INTO stuffingcon (owner,driver,contAsal,contTujuan,tanggal,remarks,timestamp)
+        VALUES ('$owner','$driver','$containerasal','$containertujuan','$tanggal','$remarks',CURRENT_TIME())";
         
-if (!mysqli_query($koneksi,$sql)) {
-    die('Error: ' . mysqli_error($koneksi));
+    if (!mysqli_query($koneksi,$sql)) {
+        die('Error: ' . mysqli_error($koneksi));
 }   
-
+}
 ?>
 
 <!DOCTYPE html>
@@ -129,6 +147,7 @@ if (!mysqli_query($koneksi,$sql)) {
                                         if (isset($_POST)) {
                                             echo '<table class=table>';
                                             echo '<tr><td>' . 'Owner ' . '</td><td>' . ':' . '</td><td>' . $owner . '</td></tr>';
+                                            echo '<tr><td>' . 'Driver ' . '</td><td>' . ':' . '</td><td>' . $driver . '</td></tr>';
                                             echo '<tr><td>' . 'Container Asal ' . '</td><td>' . ':' . '</td><td>' . $containerasal . '</td></tr>';
                                             echo '<tr><td>' . 'Container Tujuan ' . '</td><td>' . ':' . '</td><td>' . $containertujuan . '</td></tr>';
                                             echo '<tr><td>' . 'Tanggal ' . '</td><td>' . ':' . '</td><td>' . $tanggal . '</td></tr>';

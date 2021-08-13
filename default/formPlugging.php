@@ -129,13 +129,9 @@ if (isset($_GET['no'])){
                                             <div class="col-sm-7">
                                                 <input class="form-control" type="text" id="owner" name="owner"
                                                 <?php
-                                                
                                                 if (isset($_GET['no'])){
                                                     echo 'value="' . $data['owner'] . '"';
-                                                }else{
-                                                    echo ' ';
                                                 }
-
                                                 ?>
                                                 >
                                             </div>
@@ -155,19 +151,18 @@ if (isset($_GET['no'])){
                                                         echo '<option value="'. $idCont[$i] . '">' . $idCont[$i] . '</option>';
                                                     }
                                                     ?>
-                                                    </select>
-                                                </div>
+                                                </select>
                                             </div>
-                                            <div class="form-group row">
-                                                <label for="type" class="col-4 col-form-label">Type</label>
-                                                <div class="col-sm-7">
-                                                    <input class="form-control" type="text" id="type" name="type"
-                                                    <?php
-                                                
-                                                    if (isset($_GET['no'])){
-                                                        echo 'value="' . $data['type'] . '"';
-                                                    } 
-                                                    ?>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="type" class="col-4 col-form-label">Type</label>
+                                            <div class="col-sm-7">
+                                                <input class="form-control" type="text" id="type" name="type"
+                                                <?php
+                                                if (isset($_GET['no'])){
+                                                    echo 'value="' . $data['type'] . '"';
+                                                } 
+                                                ?>
                                                     >
                                                 </div>
                                             </div>

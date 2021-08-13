@@ -1,22 +1,41 @@
 <?php
+session_start();
 include 'koneksi.php';
 
 $owner = $_POST['owner'] ;
 $driver = $_POST['driver'];
 $trucking = $_POST['trucking'];
-$noContainer = $_POST['container'] ;
+$idCont = $_POST['idcontainer'] ;
 $plat = $_POST['plat'];
 $tanggal = $_POST['tanggal'];
 $remarks = $_POST['remarks'];
 $today = date("d/m/Y g:i a");
 
-$sql = "INSERT INTO stuffing (owner,driver,trucking,idContainer,plat, tanggal, remarks, timestamp)
-        VALUES ('$owner','$driver','$trucking', '$noContainer','$plat','$tanggal','$remarks',CURRENT_TIME()) ";
 
-if (!mysqli_query($koneksi,$sql)) {
-    die('Error: ' . mysqli_error($koneksi));
-}       
+if (isset($_SESSION['no'])){
+    $no = $_SESSION['no'];
+    $edit ="UPDATE stuffing set 
+            owner='$owner', 
+            driver='$driver',
+            trucking='$trucking',
+            idcontainer='$idCont',
+            plat='$plat',
+            tanggal='$tanggal',
+            remarks='$remarks',
+            timestamp=CURRENT_TIME() 
+            where no='$no'";
+    if (!mysqli_query($koneksi,$edit)) {
+        die('Error: ' . mysqli_error($koneksi));
+    }   
+    session_destroy();
+}else{
+    $sql = "INSERT INTO stuffing (owner,driver,trucking,idContainer,plat, tanggal, remarks, timestamp)
+        VALUES ('$owner','$driver','$trucking', '$idCont','$plat','$tanggal','$remarks',CURRENT_TIME()) ";
 
+    if (!mysqli_query($koneksi,$sql)) {
+        die('Error: ' . mysqli_error($koneksi));
+    }       
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -132,7 +151,7 @@ if (!mysqli_query($koneksi,$sql)) {
                                             echo '<tr><td>' . 'Owner ' . '</td><td>' . ':' . '</td><td>' . $owner . '</td></tr>';
                                             echo '<tr><td>' . 'Driver ' . '</td><td>' . ':' . '</td><td>' . $driver . '</td></tr>';
                                             echo '<tr><td>' . 'Trucking ' . '</td><td>' . ':' . '</td><td>' . $trucking . '</td></tr>';
-                                            echo '<tr><td>' . 'No Container ' . '</td><td>' . ':' . '</td><td>' . $noContainer . '</td></tr>';
+                                            echo '<tr><td>' . 'No Container ' . '</td><td>' . ':' . '</td><td>' . $idCont . '</td></tr>';
                                             echo '<tr><td>' . 'Plat ' . '</td><td>' . ':' . '</td><td>' . $plat . '</td></tr>';
                                             echo '<tr><td>' . 'Tanggal ' . '</td><td>' . ':' . '</td><td>' . $tanggal . '</td></tr>';
                                             echo '<tr><td>' . 'Remarks ' . '</td><td>' . ':' . '</td><td>' . $remarks . '</td></tr>';

@@ -1,3 +1,19 @@
+<?php
+session_start();
+include 'koneksi.php';
+
+if (isset($_GET['no'])){
+    $no = $_GET['no'];
+    $_SESSION['no'] = $no;
+    $sql = mysqli_query($koneksi,"SELECT * FROM inputcont WHERE idcontainer='$no'");
+    $data = mysqli_fetch_array($sql);
+
+    $parts = explode("-", $data['idcontainer']);
+    $huruf = $parts[0];
+    $angka = $parts[1];
+}
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -106,17 +122,35 @@
                                         <div class="form-group row">
                                            <label for="idContainer" class="col-4 col-form-label">ID container<span class="text-danger">*</label>
                                            <div class="col-2">
-                                              <input class="form-control" type="text" id="idhuruf" name="idhuruf">                                 
+                                              <input class="form-control" type="text" id="idhuruf" name="idhuruf"
+                                              <?php
+                                                if (isset($_GET['no'])){
+                                                    echo 'value="' . $huruf . '"';
+                                                }
+                                                ?>
+                                                >                                 
                                            </div>
                                            <h5>-</h5>
                                            <div class="col-sm-2">
-                                              <input class="form-control" type="text" id="idnomer" name="idnomer">                                 
+                                              <input class="form-control" type="text" id="idnomer" name="idnomer"
+                                              <?php
+                                                if (isset($_GET['no'])){
+                                                    echo 'value="' . $angka . '"';
+                                                }
+                                                ?>
+                                                >                                 
                                            </div>
                                         </div>
                                         <div class="form-group row">
                                            <label for="owner" class="col-4 col-form-label">Owner<span class="text-danger">*</label>
                                            <div class="col-7">
-                                              <input class="form-control" type="text" id="owner" name="owner">
+                                              <input class="form-control" type="text" id="owner" name="owner"
+                                              <?php
+                                                if (isset($_GET['no'])){
+                                                    echo 'value="' . $data['owner'] . '"';
+                                                }
+                                                ?>
+                                                >
                                            </div>
                                         </div>
                                         <div class="form-group text-right m-b-0 pt-2">

@@ -9,7 +9,7 @@ while ($row = $sql->fetch_assoc()) {
     $Owner[] = $row['owner'];
     $driver[] = $row['driver'];
     $trucking[] = $row['trucking'];
-    $idCont[] = $row['idContainer'];
+    $idCont[] = $row['idcontainer'];
     $plat[] = $row['plat'];
     $tanggal[] = $row['tanggal'];
     $remarks[] = $row['remarks'];
@@ -153,6 +153,7 @@ $counter = mysqli_num_rows($sql);
                                             <th>Tanggal</th>                                                                                       
                                             <th>Remarks</th>
                                             <th>Timestamp</th>
+                                            <th>Option</th>
                                         </tr>
                                     </thead>
 
@@ -160,8 +161,9 @@ $counter = mysqli_num_rows($sql);
                                         <?php 
                                         
                                         for ($i = 0; $i < $counter; $i++) { 
+                                            $nomer = $i + 1;
                                             echo '<tr>';
-                                            echo '<td>' . $no[$i] . '</td>';
+                                            echo '<td>' . $nomer . '</td>';
                                             echo '<td>' . $Owner[$i] . '</td>';
                                             echo '<td>' . $driver[$i] . '</td>';
                                             echo '<td>' . $trucking[$i] . '</td>';
@@ -170,6 +172,7 @@ $counter = mysqli_num_rows($sql);
                                             echo '<td>' . $tanggal[$i] . '</td>';
                                             echo '<td>' . $remarks[$i] . '</td>';
                                             echo '<td>' . $timestamp[$i] . '</td>';
+                                            echo '<td align="center">' . '<a href="formstuffing.php?no=' . $no[$i] . '">EDIT</a>' . '</td>';
                                             echo '</tr>';
                                         }
                                         ?>
