@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+$_SESSION['page'] = "striping";
 include "koneksi.php";
 
 $sql = mysqli_query($koneksi, "SELECT * FROM Striping");
@@ -171,7 +172,10 @@ $counter = mysqli_num_rows($sql);
                                             echo '<td>' . $tanggal[$i] . '</td>';
                                             echo '<td>' . $remarks[$i] . '</td>';
                                             echo '<td>' . $timestamp[$i] . '</td>';
-                                            echo '<td align="center">' . '<a href="formstriping.php?no=' . $no[$i] . '">EDIT</a>' . '</td>';
+                                            echo '<td align="center">';
+                                            echo '<a href="formstriping.php?no=' . $no[$i] . '" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"> <i class="fa fa-pencil"></i></a>';
+                                            echo ' <a href="delete.php?no=' . $no[$i] . '" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>';
+                                            echo '</td>';
                                             echo '</tr>';
                                         }
                                         ?>

@@ -1,8 +1,9 @@
 <?php
-
+session_start();
+$_SESSION['page'] = "inputCont";
 include "koneksi.php";
 
-$sql = mysqli_query($koneksi, "SELECT * FROM inputCont");
+$sql = mysqli_query($koneksi, "SELECT * FROM inputCont ORDER BY timestamp");
 
 while ($row = $sql->fetch_assoc()) {
     $idCont[] = $row['idcontainer'];
@@ -139,7 +140,7 @@ $counter = mysqli_num_rows($sql);
                                             <th>id Container</th>
                                             <th>Owner</th>
                                             <th>Timestamp</th>
-                                            <th>Option</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
 
@@ -153,7 +154,10 @@ $counter = mysqli_num_rows($sql);
                                             echo '<td>' . $idCont[$i] . '</td>';
                                             echo '<td>' . $owner[$i] . '</td>';
                                             echo '<td>' . $timestamp[$i] . '</td>';
-                                            echo '<td align="center">' . '<a href="formInputCon.php?no=' . $idCont[$i] . '">EDIT</a>' . '</td>';
+                                            echo '<td align="center">';
+                                            echo '<a href="formInputCon.php?no=' . $idCont[$i] . '" class="on-default edit-row" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"> <i class="fa fa-pencil"></i></a>';
+                                            echo ' <a href="delete.php?no=' . $idCont[$i] . '" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>';
+                                            echo '</td>';
                                             echo '</tr>';
                                         }
                                         ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 11, 2021 at 10:46 PM
+-- Generation Time: Aug 13, 2021 at 07:30 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -38,8 +38,7 @@ CREATE TABLE `inputcont` (
 --
 
 INSERT INTO `inputcont` (`idcontainer`, `owner`, `timestamp`) VALUES
-('TEST-1234567', 'Januar', '2021-08-11 21:34:30'),
-('TSET-121234', 'Jaf', '2021-08-11 21:34:54');
+('TEST-1234567', 'Muhammad Januar Pribadi', '2021-08-13 19:06:23');
 
 -- --------------------------------------------------------
 
@@ -50,7 +49,7 @@ INSERT INTO `inputcont` (`idcontainer`, `owner`, `timestamp`) VALUES
 CREATE TABLE `plugging` (
   `no` int(11) NOT NULL,
   `owner` varchar(50) DEFAULT NULL,
-  `idcontainer` varchar(11) DEFAULT NULL,
+  `idcontainer` varchar(12) DEFAULT NULL,
   `type` char(10) DEFAULT NULL,
   `size` varchar(20) NOT NULL,
   `mulai` datetime DEFAULT NULL,
@@ -75,7 +74,7 @@ INSERT INTO `plugging` (`no`, `owner`, `idcontainer`, `type`, `size`, `mulai`, `
 CREATE TABLE `striping` (
   `no` int(11) NOT NULL,
   `plat` varchar(10) DEFAULT NULL,
-  `idContainer` varchar(11) DEFAULT NULL,
+  `idcontainer` varchar(12) DEFAULT NULL,
   `owner` varchar(50) DEFAULT NULL,
   `driver` varchar(20) NOT NULL,
   `trucking` varchar(20) NOT NULL,
@@ -88,8 +87,7 @@ CREATE TABLE `striping` (
 -- Dumping data for table `striping`
 --
 
-INSERT INTO `striping` (`no`, `plat`, `idContainer`, `owner`, `driver`, `trucking`, `tanggal`, `remarks`, `timestamp`) VALUES
-(1, 'L 1234 WS', 'TEST-123456', 'Januar', 'Mukidi', '', '2021-08-11 21:41:00', 'ngedukno barang', '2021-08-11 21:41:09'),
+INSERT INTO `striping` (`no`, `plat`, `idcontainer`, `owner`, `driver`, `trucking`, `tanggal`, `remarks`, `timestamp`) VALUES
 (2, 'L 1234 WS', 'TSET-121234', 'Jaf', 'Budi', 'Sayurbox', '2021-08-11 22:44:00', 'ngedukno barang', '2021-08-11 22:44:56');
 
 -- --------------------------------------------------------
@@ -103,7 +101,7 @@ CREATE TABLE `stuffing` (
   `owner` varchar(50) DEFAULT NULL,
   `driver` varchar(20) NOT NULL,
   `trucking` varchar(20) NOT NULL,
-  `idContainer` varchar(11) DEFAULT NULL,
+  `idcontainer` varchar(12) DEFAULT NULL,
   `plat` varchar(10) DEFAULT NULL,
   `tanggal` datetime DEFAULT NULL,
   `remarks` varchar(50) DEFAULT NULL,
@@ -114,8 +112,7 @@ CREATE TABLE `stuffing` (
 -- Dumping data for table `stuffing`
 --
 
-INSERT INTO `stuffing` (`no`, `owner`, `driver`, `trucking`, `idContainer`, `plat`, `tanggal`, `remarks`, `timestamp`) VALUES
-(1, 'Jaf', 'Budi', '', 'TSET-121234', 'L 1234 WS', '2021-08-11 21:39:00', 'munggahno barang', '2021-08-11 21:40:40'),
+INSERT INTO `stuffing` (`no`, `owner`, `driver`, `trucking`, `idcontainer`, `plat`, `tanggal`, `remarks`, `timestamp`) VALUES
 (2, 'Januar', 'Mukidi', 'Sayurbox', 'TEST-123456', 'L 1234 WS', '2021-08-11 22:44:00', 'munggahno barang', '2021-08-11 22:44:22');
 
 -- --------------------------------------------------------
@@ -127,8 +124,9 @@ INSERT INTO `stuffing` (`no`, `owner`, `driver`, `trucking`, `idContainer`, `pla
 CREATE TABLE `stuffingcon` (
   `no` int(11) NOT NULL,
   `owner` varchar(50) DEFAULT NULL,
-  `contAsal` varchar(11) DEFAULT NULL,
-  `contTujuan` varchar(11) DEFAULT NULL,
+  `driver` varchar(20) NOT NULL,
+  `contAsal` varchar(12) DEFAULT NULL,
+  `contTujuan` varchar(12) DEFAULT NULL,
   `tanggal` datetime DEFAULT NULL,
   `remarks` varchar(50) DEFAULT NULL,
   `timestamp` datetime DEFAULT NULL
@@ -138,8 +136,8 @@ CREATE TABLE `stuffingcon` (
 -- Dumping data for table `stuffingcon`
 --
 
-INSERT INTO `stuffingcon` (`no`, `owner`, `contAsal`, `contTujuan`, `tanggal`, `remarks`, `timestamp`) VALUES
-(1, 'Januar', 'TEST-123456', 'TSET-121234', '2021-08-11 21:39:00', 'pindahin barang karena ban bocor', '2021-08-11 21:39:38');
+INSERT INTO `stuffingcon` (`no`, `owner`, `driver`, `contAsal`, `contTujuan`, `tanggal`, `remarks`, `timestamp`) VALUES
+(1, 'Januar', 'Mukidi', 'TEST-123456', 'TSET-121234', '2021-08-11 21:39:00', 'pindahin barang karena ban bocor', '2021-08-13 15:17:25');
 
 --
 -- Indexes for dumped tables
@@ -183,25 +181,25 @@ ALTER TABLE `stuffingcon`
 -- AUTO_INCREMENT for table `plugging`
 --
 ALTER TABLE `plugging`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `striping`
 --
 ALTER TABLE `striping`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `stuffing`
 --
 ALTER TABLE `stuffing`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `stuffingcon`
 --
 ALTER TABLE `stuffingcon`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
